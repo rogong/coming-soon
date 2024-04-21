@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #4e8df5, #ed5f72, #ff7eb1, #4782e8); /* Gradient background with pink and red */
+      color: #fff; /* Set text color to white for better contrast */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .header {
+      padding: 20px 0;
+    }
+    .logo {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 20px; /* Adjust margin to move the logo closer to the "Coming Soon" heading */
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .content {
+      max-width: 600px;
+    }
+    .heading {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .timer {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        max-width: 80px;
+      }
+      .heading {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="/img/logo.jpg" alt="Logo" class="logo">
+  </div>
+  <div class="container">
+    <div class="content">
+      <h1 class="heading">Coming Soon</h1>
+      <div class="timer" id="countdown"></div>
+    </div>
+  </div>
+
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("May 1, 2024 00:00:00").getTime();
+
+    // Update the countdown every second
+    var x = setInterval(function() {
+      // Get the current date and time
+      var now = new Date().getTime();
+
+      // Calculate the distance between now and the countdown date
+      var distance = countDownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      // If the countdown is finished, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
